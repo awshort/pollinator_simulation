@@ -95,9 +95,9 @@ def create_gamete(parent):
 		for j in range(1,int(L/QTL)):
 			if random.random() < rr:
 				# Swap the alleles at this position
-				gamete.append(gameteA[i+j])
+				gamete.append(gameteB[i+j])
 			else:
-				gamete.append(gameteB[i+j])          
+				gamete.append(gameteA[i+j])          
 	return(gamete)
 
 #create zygote
