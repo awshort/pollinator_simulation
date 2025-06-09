@@ -1,6 +1,6 @@
 """
-# Updated on May 20, 2025
-# @author: Carrie and Aidan
+# Updated on June 09, 2025
+# @authors: Carrie, Aidan, and John
 # This code simulates pollinator isolation between Penstemon barbatus and virgatus without selfling
 # Usage: python script.py <sm_val> <L> <QTL> <N> <gens> <reps> <sampled_gen> <seeds> <rr>
 """
@@ -21,7 +21,7 @@ gens = int(sys.argv[5]) # number of generations
 reps = int(sys.argv[6]) # number of replicates
 sampled_gen = int(sys.argv[7]) # sampling every XX generations
 seeds = int(sys.argv[8]) # number of offspring produced per crossing event
-rr = float(sys.argv[9])
+rr = float(sys.argv[9]) # recombination rate between QTL and adjacent neutral loci
 
 ##################################################################
 
@@ -37,9 +37,9 @@ def setup_pop(N, L):
 
 #function to select QTL positions
 def generate_QTL_positions_2(L, QTL):
-    my_list = list(range(L))
-    value = int(L/QTL)
-    every_other_element = my_list[::value]
+    my_list = list(range(L)) #All positions
+    value = int(L/QTL) #number of neutral loci adjacent to QTL
+    every_other_element = my_list[::value] #Select QTL positions with "value" number of neutral loci between them
     return(every_other_element)
 
 #function to genotype individual at QTL 
@@ -61,6 +61,7 @@ def F_bee(x):
     return a1*((a1/a2)**(-x))
 
 #function to calculate likelihood of hummingbird visitation
+
 def F_hb(x):
     global a1
     global a2
